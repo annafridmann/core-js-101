@@ -28,8 +28,14 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+function willYouMarryMe(isPositiveAnswer) {
+  return new Promise((yes, no) => {
+    if (isPositiveAnswer === true) {
+      yes('Hooray!!! She said "Yes"!');
+    } else if (isPositiveAnswer === false) {
+      yes('Oh no, she said "No".');
+    } else no(new Error('Wrong parameter is passed! Ask her again.'));
+  });
 }
 
 
